@@ -1,0 +1,28 @@
+﻿.PayPalCart 
+{
+    display: none;
+}
+.PayPalCart TH 
+{
+    background-color: #e0e0e0;
+}
+.PayPalCartTotals 
+{
+    background: #eee;
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+}
+.PayPalCart A 
+{
+    text-decoration: none;
+    color: Gray;
+}
+.PayPalCart A:hover
+{
+    font-weight: bold;
+}
+#PayPalMiniCart
+{
+    padding: 5px;
+    text-align: center;
+}
