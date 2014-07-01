@@ -1,7 +1,7 @@
 <?php
 global $music_seller_versionClass;
 global $music_seller_premiumFeature;
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6c'));
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
 
 if (ini_set('upload_max_filesize', '1024M')) {
 	ini_set('post_max_size', '1024M');
