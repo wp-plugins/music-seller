@@ -1177,6 +1177,9 @@ function music_seller_process_download() {
 }
 function music_seller_title($array,$file) {
 	$title = get_option('music_seller_file_title');
+	if (!$title) {
+		$title = '%%artist%% - %%title%% (%%year%%)';
+	}
 	foreach ($array['tags']['id3v2'] as $key => $arr) {
 		$title = str_replace('%%' . $key . '%%', implode(", ", $arr), $title);
 	}
