@@ -39,6 +39,10 @@ Installing abd running the plugin in 3 easy steps.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure PayPal account under Settings -> Music Seller
 
+== Screenshots ==
+
+1. How it looks on your website, in pro version you can also change the button colors.
+
 == Frequently Asked Questions ==
 
 = Is there any limitation on how many sites I can use it? =
