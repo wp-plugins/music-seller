@@ -42,6 +42,7 @@ Installing abd running the plugin in 3 easy steps.
 == Screenshots ==
 
 1. How it looks on your website, in pro version you can also change the button colors.
+2. The customizable thank you page that the user sees when back from PayPal after payment. You can customize the page text as desired.
 
 == Frequently Asked Questions ==
 
