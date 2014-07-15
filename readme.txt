@@ -56,8 +56,11 @@ The plugin creates a secure folder that is not accessible without making a payme
 
 == Changelog ==
 
+= 2.1 =
+* Fixed keywords description and some css problems.
+
 = 2.0 =
-* Fixed the packege due to svn troubles.
+* Fixed the package due to svn troubles.
 
 = 1.0 =
 * Initial release.
