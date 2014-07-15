@@ -1,6 +1,6 @@
 === Music Seller  ===
 Contributors: motov.net
-Tags: paypal, epub, paid downloads, sell, digital downloads, music, mp3, paid, downloads, ogg, sell ebooks music, sell audio, sell audio files, paid download, pay per download, sell files
+Tags: paypal, audio player, paid downloads, sell, digital downloads, music, mp3, paid, downloads, ogg, player, sell audio, sell audio files, paid download, pay per download, sell files
 Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 2.1
