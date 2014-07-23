@@ -1,6 +1,6 @@
 === Music Seller  ===
 Contributors: motov.net
-Tags: paypal, epub, paid downloads, sell, digital downloads, music, mp3, paid, downloads, ogg, sell ebooks music, sell audio, sell audio files, paid download, pay per download, sell files
+Tags:audio,audio player,music,music player,e-commerce,ecommerce,facebook,google,google+,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,social network,songs,store,twitter,widget
 Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 2.2
@@ -19,8 +19,19 @@ The Free version can not play previews and change shopping cart buttons colors. 
 	Is there a demo somewhere?
 Yes there is: http://wp.shopfiles.com/?p=312
 
-	What does it do? 
-It will let you sell your music and audio files in a very stylish and secure way. It's PRO version is the only extension for WordPress that allows sell audio files and let the users hear a sample before ordering which would bring more sales.
+Music Seller features:
+
+	♪ Allows selling audio files via PayPal
+	♪ Allows a custom setup of the online store
+	♪ Includes an audio player that supports formats: OGA, MP3, WAV, WMA
+	♪ Supports all most popular web browsers and mobile devices
+	♪ Includes a module to track sales statistics 
+	
+Music Seller is an online store for selling audio files: music, speeches, narratives, everything audio. With Music Seller your sales will be safe, with all the security PayPal offers.
+
+Music Seller protects your audio files, preventing them from being downloaded without permission.
+
+Music Seller includes an audio player compatible with all major browsers: Internet Explorer, Firefox, Opera, Safari, Chrome and mobile devices: iPhone, iPad, Android. The audio player is developed following the html5 standard; in old browsers the music player uses alternative technologies like Flash and Silverlight. The Music Seller audio player supports the following file formats: MP3, WAV, WMA and OGA.
 
 	How it works?
 Very easy and intuitive! All you need to do is upload audio files with the post and set a price. In the pro version you will also be able to upload previews. Then the only thing left is to use the code [music_seller] and when you save the post the shopping cart for the audio files will be shown instead of the shortcode.
