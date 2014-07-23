@@ -1,9 +1,9 @@
 === Music Seller  ===
 Contributors: motov.net
-Tags: paypal, audio player, paid downloads, sell, digital downloads, music, mp3, paid, downloads, ogg, player, sell audio, sell audio files, paid download, pay per download, sell files
+Tags: paypal, epub, paid downloads, sell, digital downloads, music, mp3, paid, downloads, ogg, sell ebooks music, sell audio, sell audio files, paid download, pay per download, sell files
 Requires at least: 3.5.1
 Tested up to: 3.9.1
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,11 +56,11 @@ The plugin creates a secure folder that is not accessible without making a payme
 
 == Changelog ==
 
-= 2.1 =
-* Fixed keywords description and some css problems.
+= 2.2 =
+* Fixed to work in Chrome and OS X. 
 
 = 2.0 =
-* Fixed the package due to svn troubles.
+* Fixed the packege due to svn troubles.
 
 = 1.0 =
 * Initial release.

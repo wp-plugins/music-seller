@@ -475,9 +475,11 @@ jQuery(document).ready(function(){
 	}, [
 		$mp3files
 	], {
-		swfPath: \"js\",
-		supplied: \"oga, mp3\",
+		swfPath: \"" . plugins_url( '/js/player' , __FILE__ ) . "\",
+		supplied: \"mp3\",
 		wmode: \"window\",
+		solution: \"flash, html\",
+
 		smoothPlayBar: true,
 		keyEnabled: true,
 		ready: function () {
