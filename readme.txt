@@ -3,7 +3,7 @@ Contributors: motov.net
 Tags:audio,audio player,music,music player,e-commerce,ecommerce,facebook,google,google+,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,social network,songs,store,twitter,widget
 Requires at least: 3.5.1
 Tested up to: 3.9.1
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ No tehre are no limitations.
 The plugin creates a secure folder that is not accessible without making a payment for the specific file(s) first. It's impossible to steal your files for free, even the previews are well protected.
 
 == Changelog ==
+
+= 2.3 =
+* Fixed to work with PHP < 5.4. 
 
 = 2.2 =
 * Fixed to work in Chrome and OS X. 

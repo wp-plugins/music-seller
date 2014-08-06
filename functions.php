@@ -1,18 +1,28 @@
 <?php
 global $music_seller_versionClass;
 global $music_seller_premiumFeature;
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
 
 if (ini_set('upload_max_filesize', '1024M')) {
 	ini_set('post_max_size', '1024M');
 }
 
-if (MUSIC_SELLER_VERSION == 'Full') {
-	$music_seller_versionClass = 'music_seller_visible';
-} else {
-	$music_seller_versionClass = 'music_seller_invisible';
-	$music_seller_premiumFeature = 'music_seller_premiumFeature';
+if (function_exists('hex2bin') == false) {
+	function hex2bin($hex_string) {
+		$pos = 0;
+		$result = '';
+		while ($pos < strlen($hex_string)) {
+			if (strpos(HEX2BIN_WS, $hex_string{$pos}) !== FALSE) {
+				$pos++;
+			} else {
+				$code = hexdec(substr($hex_string, $pos, 2));
+				$pos = $pos + 2;
+				$result .= chr($code);
+			}
+		}
+		return $result;
+	}
 }
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
 
 class MUSIC_SELLERWPOptions {
 
@@ -424,7 +434,9 @@ function music_seller( $atts ){
 	foreach (get_post_meta(get_the_ID(),'music_seller_file',true) as $key => $value) {
 		$title = basename($value['file']);
 		$title = ucwords($title);
-		require_once('includes/getid3/getid3.php');
+		if (!class_exists('getID3')) {
+			require_once('includes/getid3/getid3.php');
+		}
 		$getID3 = new getID3;
 		$filePath = str_replace('C:xampphtdocswp', 'c:\xampp\htdocs\wp', $value['file']);
 		$ThisFileInfo = $getID3->analyze($filePath);
@@ -1187,4 +1199,12 @@ function music_seller_title($array,$file) {
 	}
 	return $title;
 }
+
+if (MUSIC_SELLER_VERSION == 'Full') {
+	$music_seller_versionClass = 'music_seller_visible';
+} else {
+	$music_seller_versionClass = 'music_seller_invisible';
+	$music_seller_premiumFeature = 'music_seller_premiumFeature';
+}
+
 ?>
