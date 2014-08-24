@@ -67,6 +67,9 @@ The plugin creates a secure folder that is not accessible without making a payme
 
 == Changelog ==
 
+= 2.4 =
+* Added Add all to cart feature for paid version and fixed a bug in both versions regarding the cart icon. 
+
 = 2.3 =
 * Fixed to work with PHP < 5.4. 
 

@@ -460,7 +460,9 @@ function music_seller( $atts ){
 			},";
 	}
 	$key = md5(microtime(true));
-	
+	if (MUSIC_SELLER_VERSION == 'Full') {
+		$MUSIC_SELLER_ADD_ALL_TO_CART = '<input type="button" class="music_seller_add_all_to_cart" onClick="music_seller_add_all_to_cart(this)" value="Add All To Cart" />';
+	}
 	$out = "
 <style type=\"text/css\">
 .music_seller_add_to_cart {
@@ -497,19 +499,23 @@ jQuery(document).ready(function(){
 		ready: function () {
           jQuery('.music_seller_add_to_cart').click(function (e) {
           	el = jQuery(e.target);
+			if (el.attr('data-key') == undefined) {
+				el = jQuery(e.target).parent();
+			}
           	var code = el.attr('data-key');
           	var description = el.attr('data-title');
           	var quantity = 1;
           	var value = el.attr('data-price');
           	var vat = 0;
-          	theDiv = jQuery('#myCart" . get_the_ID() . "').get()[0];
+          	parentDiv = jQuery(el).parent().parent().parent().parent().parent().parent().parent().get();
+			theDiv = jQuery('.music_seller_cart_div',parentDiv);
           	if (jQuery(this).hasClass('music_seller_in_cart') == false) {
-	          	jQuery('#myCart" . get_the_ID() . "').PayPalCart('add', code, description, quantity, value, vat);
+	          	theDiv.PayPalCart('add', code, description, quantity, value, vat);
 	          	jQuery('.music_seller_cart_icon',this).animate({ 'width': '16px' }, 120 );
 	          	jQuery(this).addClass('music_seller_in_cart');
 				jQuery('.music_seller_buy_now',theDiv).val('Buy Now for ' + jQuery('.PayPalCartTotals td:nth-child(2)',theDiv).html());	          	
           	} else {
-	          	jQuery('#myCart" . get_the_ID() . "').PayPalCart('remove', code);
+	          	theDiv.PayPalCart('remove', code);
 	          	jQuery('.music_seller_cart_icon',this).animate({ 'width': '0px' }, 120 );
 	          	jQuery(this).removeClass('music_seller_in_cart');
 				jQuery('.music_seller_buy_now',theDiv).val('Buy Now for ' + jQuery('.PayPalCartTotals td:nth-child(2)',theDiv).html());	          	
@@ -518,12 +524,13 @@ jQuery(document).ready(function(){
 				}
           	}
           });
+
 			//TODO: If $0.00 make text just Buy Now
-		  theDiv = jQuery('#myCart" . get_the_ID() . "').get()[0];
-          music_seller_update_icons(theDiv);
+		  	theDiv = jQuery('#myCart" . get_the_ID() . "').get()[0];
+         	music_seller_update_icons(theDiv);
         },
 	});
-    
+
     // Create a basic cart
     jQuery(\"#myCart" . get_the_ID() . "\").PayPalCart({ business: '" . get_option('music_seller_paypal_account') . "',
             notifyURL: \"" . add_query_arg(array('task' => 'music_seller_ipn', 'postid' => get_the_ID(), 'key' => $key), remove_query_arg('p',get_permalink(get_the_ID()))) . "\",
@@ -541,6 +548,11 @@ jQuery(document).ready(function(){
     });
 });
 //]]>
+			var MUSIC_SELLER_ADD_ALL_TO_CART = '" . $MUSIC_SELLER_ADD_ALL_TO_CART . "';
+    function music_seller_add_all_to_cart(obj) {
+				pluginDiv = jQuery(obj).parent().parent().parent().get();
+				jQuery('.music_seller_add_to_cart:not(.music_seller_in_cart)',pluginDiv).trigger('click');
+	}
 </script>
 		<div class=\"music_seller_player_and_cart\">
 		<div id=\"jquery_jplayer_" . $key . "\" class=\"jp-jplayer\"></div>
@@ -587,7 +599,7 @@ jQuery(document).ready(function(){
 				</div>
 			</div>
 		</div>
-		<div id=\"myCart" . get_the_ID() . "\"></div>
+		<div class=\"music_seller_cart_div\" id=\"myCart" . get_the_ID() . "\"></div>
 		</div>
 	";
 	$post_id = get_the_ID();
@@ -731,7 +743,7 @@ function music_seller_set_content_type( $content_type ){
 }
 
 
-	function music_seller_ipn() {
+function music_seller_ipn() {
 	if ($_REQUEST['task'] == 'music_seller_ipn') {
 		global $music_seller_email_delivery;
 		include_once 'payment_gateways/paypal/ipnlistener.php';
