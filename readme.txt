@@ -1,6 +1,6 @@
 === Music Seller  ===
 Contributors: motov.net
-Tags:audio,audio player,music,music player,e-commerce,ecommerce,facebook,google,google+,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,social network,songs,store,twitter,widget
+Tags:audio, audio player, music, music player, e-commerce, ecommerce, sound, shopping,playlist,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,cart,songs,store,shopping cart,widget
 Requires at least: 3.5.1
 Tested up to: 3.9.2
 Stable tag: 2.4
@@ -13,11 +13,13 @@ This plugin will allow you to sell music in various formats like mp3, ogg and et
 
 Music Seller Plugin for WordPress has been built by professionals in eCommerce extensions working more than 6 years in providing paid downloads solutions for both Joomla nad WordPress. 
 
+	Is there a demo somewhere?
+Yes there is: http://wp.shopfiles.com/?p=312
+
 	Are there any limitations?
 The Free version can not play previews and change shopping cart buttons colors. For this you need the $20 full version UPGRADE from http://www.shopfiles.com/index.php/products/music-seller-plugin-for-wordpress
 
-	Is there a demo somewhere?
-Yes there is: http://wp.shopfiles.com/?p=312
+
 
 Music Seller features:
 
