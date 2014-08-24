@@ -1,0 +1,97 @@
+.music_seller_row {
+	margin-bottom: 10px;
+	padding: 5px;
+}
+.music_seller_row span {
+	margin-left: 10px;
+	margin-top: 0px;
+	display: inline-block;
+}
+.music_seller_icon {
+	width: 32px;
+	height: 32px;
+	background: url(images/audio-icon.gif);
+	background-size: 32px 32px;
+	display: block;
+	float: left;
+
+}
+.music_seller_price {
+	height: 32px;
+	display: block;
+}
+.music_seller_row:hover {
+	background-color: #f1f1f1;
+}
+.music_seller_delete {
+}
+.music_seller_delete_icon {
+	width: 16px;
+	height: 16px;
+	background: url(images/trash.gif);
+	margin-left: -4px !important;
+	margin-bottom: -3px;
+}
+.music_seller_no_preview {
+	font-style: italic;
+	font-weight: bold;
+}
+/* Frontend */
+
+.music_seller_add_to_cart {
+	margin-right:0px;
+    padding: .35em 1em;
+    font-family: Lucida Grande, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    font-size: .75em;
+    line-height: 1.5;
+    text-shadow: 0 -1px 1px rgba(0,0,0,.3);
+    border-radius: 23px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.3);
+    float: right;
+    cursor: pointer;
+}
+.music_seller_add_to_cart:last-child {
+	margin-right:0px;
+}
+.music_seller_add_to_cart:hover, .apl:focus {
+    box-shadow: 0 1px 0 rgba(255,255,255,.6), inset 0 1px 0 rgba(255,255,255,.3);
+    color: #fff;
+}
+ 
+.music_seller_add_to_cart:active {
+    background-color: #2D7CD1;
+    box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 5px rgba(0,0,100,.5);
+    color: #fff;
+}
+.music_seller_cart_icon {
+	display: block;
+	/*width: 16px;*/
+	height: 16px;
+	background-image: url(data:image/gif;base64,R0lGODlhgACAAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAACAAIAAAAL/lI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2jed6HPT77+gJfcCiYIgkGnHJpnIpc0qF0Nl0WuVdpVnYltt1fYdh7bZMw6JtzvUN7E434+w53Wq/R/P6F7wvxneBBFjRNihYGHRowaj44NiY+KgQaThJefAnmZTZYHnZ6VkJGko4ilBqSoaqiblK1XqkSkFbaFv7eqsL+5S5qQE6NkxcLLqAm3ucatzsrEbK2xuA/Gx9TV297GGJ7d3MkDwd/V1+Rn4K0m3ODs28zZ3YPj8pzpluQK/vm28//ujv3y5pGQJCAaaOYBeDAvUgTAgvDsOGdyZSdPMwBK19/+AWRRyxkWMxjx9FhBQ5jCQ+EydRflEZS4UqlynDWURUkuaYTzfvsdKm012Cnj5joguKKWMJomZWylS4g2lRflWULoWaQypOp0usssRaByxErka0bv1Z1exZqkW8nkDqUg5cjnLn0qthd1/YvOz28v325q+5wIIBy7pa8jAHt4rXsm28WCxkCIwnT1BrGTNkzZslW+bpGS/aFOfCXHm7c+FLkMRUpx67Om3rD8ayOKNd++DtyB3bFh5Z9jdwIMKH/yg++zjymsSXx1bu/LTv6EJ1WOPdu/nuDc9058ZufHpy8K+7hicv3TZz2NVlt4+XHs17jZz9jEZB9rP+/fz7+wz/D2CAAg5IYIE0FAAAOw==);
+	background-size: 16px 16px;
+	float: left;
+	margin-right: 3px;
+
+}
+.music_seller_player_and_cart input[type="submit"]{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.music_seller_invisible {
+	display: none !important;
+}
+.music_seller_premiumFeature {
+	background-color: rgb(255, 189, 189);
+	border-width: 10px;
+}
+.music_seller_buy_now {
+	display:inline !important;
+}
+.music_seller_form {
+	text-align:center;
+}
