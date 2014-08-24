@@ -97,9 +97,9 @@
         var overalltax = 0;
         var totalitems = 0;
         if (theDiv.settings.sandbox) {
-            var theform = '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">\r\n';
+            var theform = '<form class="music_seller_form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">\r\n';
         } else {
-            var theform = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">\r\n';
+            var theform = '<form class="music_seller_form" action="https://www.paypal.com/cgi-bin/webscr" method="post">\r\n';
         }
         theform += '<input type="hidden" name="cmd" value="_cart" />\r\n';
         theform += '<input type="hidden" name="upload" value="1" />\r\n';
@@ -141,7 +141,8 @@
         theform += '<tr class="PayPalCartTotals"><td colspan="2" align="left">Total</td><td align="right">' + theDiv.settings.currencysign + parseFloat(overalltotal + overalltax).toFixed(2) + '</td></tr>\r\n';
         theform += '<tr><td colspan="3" align="right">button was here</td></tr>\r\n';
         theform += '</table>\r\n';
-        theform += '<input type="submit" class="music_seller_buy_now" value="Buy Now"></form>\r\n';
+        theform += '<input type="submit" class="music_seller_buy_now" value="Buy Now" /> ' + MUSIC_SELLER_ADD_ALL_TO_CART + '</form>\r\n';
+        
         jQuery(theDiv).html(theform).ready(function () {
             jQuery(this).find('input').keypress(function (e) {
                 if (e.which == 13) {
