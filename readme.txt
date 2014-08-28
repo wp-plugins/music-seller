@@ -3,7 +3,7 @@ Contributors: motov.net
 Tags:audio, audio player, music, music player, e-commerce, ecommerce, sound, shopping,playlist,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,cart,songs,store,shopping cart,widget
 Requires at least: 3.5.1
 Tested up to: 3.9.2
-Stable tag: 2.4
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,9 @@ No tehre are no limitations.
 The plugin creates a secure folder that is not accessible without making a payment for the specific file(s) first. It's impossible to steal your files for free, even the previews are well protected.
 
 == Changelog ==
+
+= 2.5 =
+* CSS Fixes, JS fixes, warning taken care of when downloading song. 
 
 = 2.4 =
 * Added Add all to cart feature for paid version and fixed a bug in both versions regarding the cart icon. 

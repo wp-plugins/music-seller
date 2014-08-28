@@ -461,7 +461,7 @@ function music_seller( $atts ){
 	}
 	$key = md5(microtime(true));
 	if (MUSIC_SELLER_VERSION == 'Full') {
-		$MUSIC_SELLER_ADD_ALL_TO_CART = '<input type="button" class="music_seller_add_all_to_cart" onClick="music_seller_add_all_to_cart(this)" value="Add All To Cart" />';
+		$MUSIC_SELLER_ADD_ALL_TO_CART = '<input type="submit" class="music_seller_add_all_to_cart" onClick="music_seller_add_all_to_cart(this)" value="Add All To Cart" />';
 	}
 	$out = "
 <style type=\"text/css\">
@@ -1151,6 +1151,7 @@ function music_seller_count_download($order_id,$file) {
 	return update_post_meta($order_id,'downloads',$downloads);
 }
 function music_seller_process_download() {
+	error_reporting(0);
 	if ($_REQUEST['music_seller_download'] != '') {
 		if( function_exists( 'apache_setenv' ) ) @apache_setenv('no-gzip', 1);
 		@ini_set( 'zlib.output_compression', 'Off' );
