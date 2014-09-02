@@ -209,10 +209,9 @@ function music_seller_meta_box_callback( $post ) {
 				<?php
 				if (MUSIC_SELLER_VERSION == 'Full') {
 					echo ($previews[$id]['url'] != '' ? '<b>Preview file: </b> <a class="music_seller_preview_uploaded" href="' . $previews[$id]['url'] . '">' . basename($previews[$id]['file']) . '</a><br />Reupload preview: ' : '<span class="music_seller_no_preview">Upload a preview:</span> ');
-				}
 				?>
 				<input type="file" name="music_seller_preview[<?php echo $id; ?>]" /></span>
-
+<?php 			}?>
 				<div class="music_seller_price">Price: <input size="6" name="music_seller_price[<?php echo $id; ?>]" placeholder="0.00" value="<?php echo (@$prices[$id] > 0 ? $prices[$id] : '0.00'); ?>" /> <label><input type="checkbox" class="music_seller_delete" title="Delete" name="music_seller_delete[]" value="<?php echo $id; ?>" /> <span class="music_seller_delete_icon" title="Delete this file"></span></label>
 				</div>
 			</div>
@@ -461,7 +460,7 @@ function music_seller( $atts ){
 	}
 	$key = md5(microtime(true));
 	if (MUSIC_SELLER_VERSION == 'Full') {
-		$MUSIC_SELLER_ADD_ALL_TO_CART = '<input type="submit" class="music_seller_add_all_to_cart" onClick="music_seller_add_all_to_cart(this)" value="Add All To Cart" />';
+		$MUSIC_SELLER_ADD_ALL_TO_CART = '<input type="submit" class="music_seller_add_all_to_cart" onClick="music_seller_add_all_to_cart(event,this)" value="Add All To Cart" />';
 	}
 	$out = "
 <style type=\"text/css\">
@@ -549,7 +548,9 @@ jQuery(document).ready(function(){
 });
 //]]>
 			var MUSIC_SELLER_ADD_ALL_TO_CART = '" . $MUSIC_SELLER_ADD_ALL_TO_CART . "';
-    function music_seller_add_all_to_cart(obj) {
+    function music_seller_add_all_to_cart(event, obj) {
+    			e = event;
+    			e.preventDefault();
 				pluginDiv = jQuery(obj).parent().parent().parent().get();
 				jQuery('.music_seller_add_to_cart:not(.music_seller_in_cart)',pluginDiv).trigger('click');
 	}
