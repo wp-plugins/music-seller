@@ -5,7 +5,7 @@ Plugin URI: http://shopfiles.com/
 Description: A powerful tool for selling music with WordPress
 Author: Deian Motov
 Author URI:http://shopfiles.com
-Version: 2.6
+Version: 2.7
 License: GPLv2
 */
 

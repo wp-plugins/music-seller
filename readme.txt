@@ -3,11 +3,11 @@ Contributors: motov.net
 Tags:audio, audio player, music, music player, e-commerce, ecommerce, sound, shopping,playlist,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,cart,songs,store,shopping cart,widget
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 2.6
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will allow you to sell music in various formats like mp3, ogg and etc. Get "Add All To Cart" button and color changing options by upgrading.
+This plugin will allow you to sell music in various formats like mp3, ogg and etc.
 
 == Description ==
 
@@ -72,6 +72,9 @@ No tehre are no limitations.
 The plugin creates a secure folder that is not accessible without making a payment for the specific file(s) first. It's impossible to steal your files for free, even the previews are well protected.
 
 == Changelog ==
+
+= 2.7 =
+* CSS Fixes for some themes. 
 
 = 2.6 =
 * Fixes for event handling and firefox. 
