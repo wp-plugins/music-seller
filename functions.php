@@ -22,7 +22,7 @@ if (function_exists('hex2bin') == false) {
 		return $result;
 	}
 }
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6c'));
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
 
 class MUSIC_SELLERWPOptions {
 
