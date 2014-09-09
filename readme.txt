@@ -7,7 +7,7 @@ Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will allow you to sell music in various formats like mp3, ogg and etc. If you upgrade to Pro version, you will also be able to change the colors of the buttons and offer previews for the files with a player above the shopping cart.
+This plugin will allow you to sell music in various formats like mp3, ogg and etc. Get "Add All To Cart" button and color changing options by upgrading.
 
 == Description ==
 
