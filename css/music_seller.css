@@ -94,6 +94,7 @@
 }
 .music_seller_form {
 	text-align:center;
+	clear:both;
 }
 .jp-playlist li {
 	padding-left:10px !important;
