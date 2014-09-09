@@ -11,10 +11,14 @@ This plugin will allow you to sell music in various formats like mp3, ogg and et
 
 == Description ==
 
-Music Seller Plugin for WordPress has been built by professionals in eCommerce extensions working more than 6 years in providing paid downloads solutions for both Joomla nad WordPress. 
-
 	Is there a demo somewhere?
 Yes there is: http://wp.shopfiles.com/?p=312
+
+	Video demonstration of installation, configuration and first test order
+https://www.youtube.com/watch?v=OXDoPDbIjyA&feature=youtu.be
+
+Music Seller Plugin for WordPress has been built by professionals in eCommerce extensions working more than 6 years in providing paid downloads solutions for both Joomla nad WordPress. 
+
 
 	Are there any limitations?
 The Free version can not play previews and change shopping cart buttons colors. For this you need the $20 full version UPGRADE from http://www.shopfiles.com/index.php/products/music-seller-plugin-for-wordpress
