@@ -22,7 +22,7 @@ if (function_exists('hex2bin') == false) {
 		return $result;
 	}
 }
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6c'));
 
 class MUSIC_SELLERWPOptions {
 
@@ -208,10 +208,19 @@ function music_seller_meta_box_callback( $post ) {
 			<div class="music_seller_row"><i class="music_seller_icon"></i><span><b>File for sale: </b><?php echo $filename; ?><br />
 				<?php
 				if (MUSIC_SELLER_VERSION == 'Full') {
-					echo ($previews[$id]['url'] != '' ? '<b>Preview file: </b> <a class="music_seller_preview_uploaded" href="' . $previews[$id]['url'] . '">' . basename($previews[$id]['file']) . '</a><br />Reupload preview: ' : '<span class="music_seller_no_preview">Upload a preview:</span> ');
-				?>
+					//var_dump($previews);
+					//error_reporting(E_ALL);
+					//ini_set('display_errors',true);
+					if (isset($previews[$id]['url'])) {
+						echo '<b>Preview file: </b> <a class="music_seller_preview_uploaded" href="' . $previews[$id]['url'] . '">' . basename($previews[$id]['file']) . '</a><br />Reupload preview: ';
+					} else {
+						echo '<span class="music_seller_no_preview">Upload a preview:</span>';
+					}
+			?>
 				<input type="file" name="music_seller_preview[<?php echo $id; ?>]" /></span>
-<?php 			}?>
+<?php
+}
+?>
 				<div class="music_seller_price">Price: <input size="6" name="music_seller_price[<?php echo $id; ?>]" placeholder="0.00" value="<?php echo (@$prices[$id] > 0 ? $prices[$id] : '0.00'); ?>" /> <label><input type="checkbox" class="music_seller_delete" title="Delete" name="music_seller_delete[]" value="<?php echo $id; ?>" /> <span class="music_seller_delete_icon" title="Delete this file"></span></label>
 				</div>
 			</div>
