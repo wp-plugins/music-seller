@@ -22,7 +22,7 @@ if (function_exists('hex2bin') == false) {
 		return $result;
 	}
 }
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6c'));
 
 class MUSIC_SELLERWPOptions {
 
@@ -198,6 +198,7 @@ function music_seller_meta_box_callback( $post ) {
 	
 	$uploads = get_post_meta(get_the_ID(),'music_seller_file',true);
 	$prices = get_post_meta(get_the_ID(),'music_seller_price',true);
+	$titles = get_post_meta(get_the_ID(),'music_seller_title',true);
 	//echo var_dump($uploads);
 	if (count($uploads) > 0 && is_array($uploads)) {
 		echo '<h4>Already uploaded files</h4>';
@@ -221,7 +222,7 @@ function music_seller_meta_box_callback( $post ) {
 <?php
 }
 ?>
-				<div class="music_seller_price">Price: <input size="6" name="music_seller_price[<?php echo $id; ?>]" placeholder="0.00" value="<?php echo (@$prices[$id] > 0 ? $prices[$id] : '0.00'); ?>" /> <label><input type="checkbox" class="music_seller_delete" title="Delete" name="music_seller_delete[]" value="<?php echo $id; ?>" /> <span class="music_seller_delete_icon" title="Delete this file"></span></label>
+				<div class="music_seller_price">Title: <input size="20" name="music_seller_title[<?php echo $id; ?>]" placeholder="" value="<?php echo $titles[$id]; ?>" /> Price: <input size="6" name="music_seller_price[<?php echo $id; ?>]" placeholder="0.00" value="<?php echo (@$prices[$id] > 0 ? $prices[$id] : '0.00'); ?>" /> <label><input type="checkbox" class="music_seller_delete" title="Delete" name="music_seller_delete[]" value="<?php echo $id; ?>" /> <span class="music_seller_delete_icon" title="Delete this file"></span></label>
 				</div>
 			</div>
 			<?php
@@ -235,6 +236,8 @@ function music_seller_save_custom_meta_data($id) {
 
 	add_post_meta($id,'music_seller_price',$_REQUEST['music_seller_price']);
 	update_post_meta($id,'music_seller_price',$_REQUEST['music_seller_price']);
+	add_post_meta($id,'music_seller_title',$_REQUEST['music_seller_title']);
+	update_post_meta($id,'music_seller_title',$_REQUEST['music_seller_title']);
 
 	if ($_POST['music_seller_delete']) {
 		foreach ($_POST['music_seller_delete'] as $delete) {
@@ -445,9 +448,16 @@ function music_seller( $atts ){
 		if (!class_exists('getID3')) {
 			require_once('includes/getid3/getid3.php');
 		}
-		$getID3 = new getID3;
-		$filePath = str_replace('C:xampphtdocswp', 'c:\xampp\htdocs\wp', $value['file']);
-		$ThisFileInfo = $getID3->analyze($filePath);
+		if (get_option('music_seller_use_id3')) {
+			$getID3 = new getID3;
+			$filePath = str_replace('C:xampphtdocswp', 'c:\xampp\htdocs\wp', $value['file']);
+			$ThisFileInfo = $getID3->analyze($filePath);
+			$title = music_seller_title($ThisFileInfo,$filePath);
+		} else {
+			$title = get_post_meta(get_the_ID(),'music_seller_title',true);
+			$title = $title[$key];
+		}
+
 		$previews = get_post_meta(get_the_ID(),'music_seller_preview',true);
 		
 		if (floatval($prices[$key]) == 0) {
@@ -455,7 +465,7 @@ function music_seller( $atts ){
 			$previews[$key]['url'] = add_query_arg( array('music_seller_free_download' => $key, 'download_key' => $downloadkey,  'postid' => get_the_ID()));
 			$previews[$key]['url'] = remove_query_arg('p',$previews[$key]['url']);
 		}
-		$title = music_seller_title($ThisFileInfo,$filePath);
+				
 		//add image later image:\"data:image/jpg;base64," . base64_encode($ThisFileInfo['comments']['picture'][0]['data']) . "\",
 		$mp3files .= "{
 				title:\"" . $title . "\",

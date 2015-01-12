@@ -53,6 +53,8 @@ class music_seller_WPOptions {
     var $border_color_hover = '#20559A';
 
     var $music_seller_show_preview = 0;
+
+    var $music_seller_use_id3 = 0;
 	
     var $music_seller_file_title = '%%artist%% - %%title%% (%%year%%)';
     
@@ -81,6 +83,7 @@ function register_music_seller_store_settings() {
 	register_setting( 'music_seller-settings-group', 'music_seller_email_delivery' );
 	register_setting( 'music_seller-settings-group', 'music_seller_attach_files' );
 	register_setting( 'music_seller-settings-group', 'music_seller_thankyou_page' );
+    register_setting( 'music_seller-settings-group', 'music_seller_use_id3' );
 	register_setting( 'music_seller-settings-group', 'music_seller_email_delivery_text' );
 	register_setting( 'music_seller-settings-group', 'music_seller_email_delivery_subject' );
 	register_setting( 'music_seller-settings-group', 'music_seller_paypal_sandbox' );
@@ -213,6 +216,11 @@ $ppcurencies = array('USD' => 'US Dollar',
         ?>
 		</select> 
         </td>
+        </tr>
+
+        <tr valign="top">
+        <th scope="row">Read titles from ID3 info (turn off if having problems)</th>
+        <td><input type="checkbox" name="music_seller_use_id3" value="1" <?php echo (get_option('music_seller_use_id3') != 0 ? 'checked="checked"' : ''); ?> /></td>
         </tr>
         
         <tr valign="top">
