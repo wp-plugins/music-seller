@@ -406,6 +406,7 @@ function music_seller_get_order($key = 'key',$val) {
 	foreach ($meta as $k => $arr) {
 		$out[$k] = $arr[0];
 	}
+	$out['order_id'] = get_the_ID();
 	return $out;
 	endwhile;
 }
@@ -430,6 +431,7 @@ function music_seller( $atts ){
 			return 'Sorry, order not found, please wait the screen will refresh in 5 seconds!<script>   window.setTimeout(\'location.reload()\', 5000);
 </script>';
 		}
+
 		$music_seller_order['downloadlink'] = music_seller_download_link($music_seller_order);
 		foreach ($music_seller_order as $k => $arr) {
 			$content = str_replace('%%' . $k . '%%', $arr, $content);
@@ -510,7 +512,7 @@ jQuery(document).ready(function(){
 		swfPath: \"" . plugins_url( '/js/player' , __FILE__ ) . "\",
 		supplied: \"mp3\",
 		wmode: \"window\",
-		solution: \"flash, html\",
+		solution: \"html, flash\",
 
 		smoothPlayBar: true,
 		keyEnabled: true,
@@ -728,7 +730,9 @@ function music_seller_download_link($order) {
 		foreach ($order as $k => $v) {
 			$order_out[$k] = $v[0];
 		}
+	$order_orig = $order;
 	$order = $order_out;
+	$order['order_id'] = $order_orig['order_id'];
 	}
 	for ($i=0; $i < $order['num_cart_items'];$i++) {
 		$link = get_permalink($order['postid']);
@@ -766,16 +770,20 @@ function music_seller_set_content_type( $content_type ){
 function music_seller_ipn() {
 	if ($_REQUEST['task'] == 'music_seller_ipn') {
 		global $music_seller_email_delivery;
+
 		include_once 'payment_gateways/paypal/ipnlistener.php';
 		$listener = new IpnListener();
 		if (get_option('music_seller_paypal_sandbox') > 0) {
 			$listener->use_sandbox = true;
 		}
+		////////
+
+		////////
 		try {
 			$listener->requirePostMethod();
 			$verified = $listener->processIpn();
 		} catch (Exception $e) {
-			error_log($e->getMessage());
+			die($e->getMessage());
 			exit(0);
 		}
 		if ($verified) {

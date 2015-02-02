@@ -58,7 +58,7 @@ class music_seller_WPOptions {
 	
     var $music_seller_file_title = '%%artist%% - %%title%% (%%year%%)';
     
-	var $thankyou_page = '<h1>Thank you for your order %%first_name%% %%last_name%%!</h1>You have successfully completed the order process! Please use the link(s) below to download your copy:<strong>Use the link below the start the download:</strong>%%downloadlink%%<h3>Details for your order:</h3>Order #: %%order_id%%Transaction: %%txn_id%%Amount: %%mc_currency%% %%mc_gross%%<strong>Your password is: %%payer_email%%</strong>Thank you!';
+	var $thankyou_page = '<h1>Thank you for your order %%first_name%% %%last_name%%!</h1>You have successfully completed the order process! Please use the link(s) below to download your copy:<br />%%downloadlink%%<h3>Details for your order:</h3>Order #: %%order_id%%<br />Transaction: %%txn_id%%<br />Amount: %%mc_currency%% %%mc_gross%%<br /><br />Thank you!';
 
 	var $email_delivery_text = '<h1>Thank you for your order %%first_name%% %%last_name%%!</h1>
 You have successfully completed the order process! Please use the link(s) below to download your copy:
