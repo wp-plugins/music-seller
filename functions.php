@@ -553,7 +553,7 @@ jQuery(document).ready(function(){
 
     // Create a basic cart
     jQuery(\"#myCart" . get_the_ID() . "\").PayPalCart({ business: '" . get_option('music_seller_paypal_account') . "',
-            notifyURL: \"" . add_query_arg(array('task' => 'music_seller_ipn', 'postid' => get_the_ID(), 'key' => $key), remove_query_arg('p',get_permalink(get_the_ID()))) . "\",
+            notifyURL: \"" . add_query_arg(array('task' => 'music_seller_ipn', 'postid' => get_the_ID(), 'key' => $key), home_url('/')) . "\",
             virtual: true,             //set to true where you are selling virtual items such as downloads
             quantityupdate: false,       //set to false if you want to disable quantity updates in the cart 
             currency: '" . $currency . "',            //set to your trading currency - see PayPal for valid options
@@ -752,13 +752,18 @@ function music_seller_download_link($order) {
 
 function music_seller_email_delivery($post_id) {
 	global $music_seller_email_delivery;
+	$debug = print_r($music_seller_email_delivery,true);
 	foreach ($music_seller_email_delivery['order'] as $k => $v) {
 		$music_seller_email_delivery['text'] = str_replace('%%' . $k . '%%', $v, $music_seller_email_delivery['text']);
 	}
-	$music_seller_email_delivery['text'] = apply_filters('the_content',$music_seller_email_delivery['text']);
+	$music_seller_email_delivery['text'] = apply_filters('music_seller_filter',$music_seller_email_delivery['text']);
 	add_filter( 'wp_mail_content_type', 'music_seller_set_content_type' );
 	if (get_option('music_seller_email_delivery') == 1) {
-		wp_mail($music_seller_email_delivery['to'],$music_seller_email_delivery['subject'], $music_seller_email_delivery['text'],null, $music_seller_email_delivery['attachments']);
+		if (!wp_mail($music_seller_email_delivery['to'],$music_seller_email_delivery['subject'], $music_seller_email_delivery['text'],null, $music_seller_email_delivery['attachments'])) {
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+			mail($music_seller_email_delivery['to'],$music_seller_email_delivery['subject'], $music_seller_email_delivery['text'],$headers);
+		}
 	}
 
 }
@@ -768,6 +773,7 @@ function music_seller_set_content_type( $content_type ){
 
 
 function music_seller_ipn() {
+	$debug = print_r($_REQUEST,true);
 	if ($_REQUEST['task'] == 'music_seller_ipn') {
 		global $music_seller_email_delivery;
 
@@ -820,7 +826,9 @@ function music_seller_ipn() {
 				global $music_seller_email_delivery; //was $music_seller_attachment look where is it
 				mail(get_option( 'admin_email' ), 'Music Seller for WordPress - Verified Order Received', $listener->getTextReport());
 				$music_seller_email_delivery = array('to' => $_REQUEST['payer_email'], 'subject' => get_option('music_seller_email_delivery_subject'), 'text' => get_option('music_seller_email_delivery_text'),'attachments' => $order['attachments'], 'order' => $order);
+				error_log('delivery being added to init');
 				add_action( 'init', 'music_seller_email_delivery', 100 );
+				error_log('delivery added to init');
 				//array('to' => $_REQUEST['payer_email'], 'subject' => get_option('email_delivery_subject'), 'text' => 'teeext', 'file' => $attachment[0]['file'])
 			} else {
 				mail(get_option( 'admin_email' ), 'Music Seller for WordPress - Possible fraud attempt ', $listener->getTextReport());
