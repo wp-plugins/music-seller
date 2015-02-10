@@ -26,6 +26,7 @@
                 var defaults = {
                     currency: 'GBP',
                     currencysign: '',
+                    cbt: 'Return to download page',
                     business: '',
                     virtual: false,
                     quantityupdate: true,
@@ -110,6 +111,9 @@
         }
         if (theDiv.settings.notifyURL != '') {
             theform += '<input type="hidden" name="notify_url" value="' + theDiv.settings.notifyURL + '" />\r\n';
+        }
+        if (theDiv.settings.cbt != '') {
+            theform += '<input type="hidden" name="cbt" value="' + theDiv.settings.cbt + '" />\r\n';
         }
         if (theDiv.settings.returnURL != '') {
             theform += '<input type="hidden" name="return" value="' + theDiv.settings.returnURL + '" />\r\n';
