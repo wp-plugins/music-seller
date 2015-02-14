@@ -100,3 +100,9 @@
 	padding-left:10px !important;
 	padding-right:10px !important;
 }
+.music_seller_player_and_cart a {
+	border:0;
+}
+.jp-volume-max {
+	display: none !important;
+}
