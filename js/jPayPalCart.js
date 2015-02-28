@@ -118,6 +118,9 @@
         if (theDiv.settings.returnURL != '') {
             theform += '<input type="hidden" name="return" value="' + theDiv.settings.returnURL + '" />\r\n';
         }
+        if (theDiv.settings.cancelURL != '') {
+            theform += '<input type="hidden" name="cancel_return" value="' + theDiv.settings.cancelURL + '" />\r\n';
+        }
         
         theform += '<table class="PayPalCart">\r\n';
         theform += '<tr><th>&nbsp;</th><th align="left">Title</th><!-- <th align="center">Qty</th> --><th align="right">Price</th></tr>\r\n';
