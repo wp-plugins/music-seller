@@ -397,7 +397,7 @@ function music_seller_update_edit_form() {
 } // end update_edit_form
 
 add_shortcode( 'music_seller', 'music_seller' );
-
+add_shortcode('music_seller_thank_you','music_seller');
 function music_seller_get_order($key = 'key',$val) {
 	$loop = new WP_Query( array ( 'post_type' => 'music_seller_order', 'meta_key' => $key, 'meta_value' => $val ) );
 	while ( $loop->have_posts() ) : $loop->the_post();
@@ -557,7 +557,8 @@ jQuery(document).ready(function(){
             virtual: true,             //set to true where you are selling virtual items such as downloads
             quantityupdate: false,       //set to false if you want to disable quantity updates in the cart 
             currency: '" . $currency . "',            //set to your trading currency - see PayPal for valid options
-			returnURL: '" . add_query_arg(array('task' => 'thankyou', 'key' => $key),get_permalink(get_the_ID())) . "',
+			returnURL: '" . add_query_arg(array('task' => 'thankyou', 'key' => $key),get_permalink(get_option('music_seller_checkout_page'))) . "',
+			cancelURL: '" . add_query_arg(array('task' => 'cancel', 'key' => $key),get_permalink(get_option('music_seller_cancel_page'))) . "',
             currencysign: '" . $symbol . "',          //set the currency symbol
 			cbt: '" . get_option('music_seller_paypal_return_button_text') . "',          //set the currency symbol
             minicartid: 'minicart',     //element to show the number of items and net value
@@ -752,6 +753,7 @@ function music_seller_download_link($order) {
 
 function music_seller_email_delivery($post_id) {
 	global $music_seller_email_delivery;
+
 	$debug = print_r($music_seller_email_delivery,true);
 	foreach ($music_seller_email_delivery['order'] as $k => $v) {
 		$music_seller_email_delivery['text'] = str_replace('%%' . $k . '%%', $v, $music_seller_email_delivery['text']);
@@ -850,7 +852,7 @@ function music_seller_attachments($order) {
 		@$item_name[] = $order['item_name' . $k];
 		@$attachments[] = $meta[$order['item_number' . $k]]['file'];
 	}
-	return $attachments;
+	return (array)$attachments;
 }
 
 function music_seller_get_file_ctype( $extension ) {

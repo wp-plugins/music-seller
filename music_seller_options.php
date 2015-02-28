@@ -103,6 +103,8 @@ function register_music_seller_store_settings() {
     register_setting( 'music_seller-settings-group', 'music_seller_border_color_hover' );
     
     register_setting( 'music_seller-settings-group', 'music_seller_color_scheme' );
+    register_setting( 'music_seller-settings-group', 'music_seller_checkout_page' );
+    register_setting( 'music_seller-settings-group', 'music_seller_cancel_page' );
 
 	//email_delivery_subject
 	
@@ -237,7 +239,60 @@ $ppcurencies = array('USD' => 'US Dollar',
         <th scope="row">PayPal Transaction Verification <span class="description">(turn off if experiencing problems)</span></span></th>
         <td><input type="checkbox" name="music_seller_paypal_verify_transactions" value="1" <?php echo (get_option('music_seller_paypal_verify_transactions',$op->paypal_verify_transactions) != 0 ? 'checked="checked"' : ''); ?> /></td>
         </tr>
-                
+        
+        <tr>
+        <th scope="row">Checkout page
+        </th>
+        <td valign="top">        
+            <?php
+$args = array(
+    'depth'                 => 0,
+    'child_of'              => 0,
+    'selected'              => get_option('music_seller_checkout_page'),
+    'echo'                  => 1,
+    'name'                  => 'music_seller_checkout_page',
+    'id'                    => null, // string
+    'show_option_none'      => '-- Please select --', // string
+    'show_option_no_change' => null, // string
+    'option_none_value'     => '0', // string
+    'post_type' => 'page'
+);
+wp_dropdown_pages($args);
+
+            ?>
+            <span class="description">
+        This page should contain the shortcode <b>[music_seller_thank_you]</b>, where you want the "Thank you" page content to appear.
+        </span>
+        </td>
+        </tr>
+
+
+<tr>
+        <th scope="row">Order cancellation page
+        </th>
+        <td valign="top">        
+            <?php
+$args = array(
+    'depth'                 => 0,
+    'child_of'              => 0,
+    'selected'              => get_option('music_seller_cancel_page'),
+    'echo'                  => 1,
+    'name'                  => 'music_seller_cancel_page',
+    'id'                    => null, // string
+    'show_option_none'      => '-- Please select --', // string
+    'show_option_no_change' => null, // string
+    'option_none_value'     => '0', // string
+    'post_type' => 'page'
+);
+wp_dropdown_pages($args);
+
+            ?>
+            <span class="description">
+        This page will be shown to the user if they cancel the order and do not complete the PayPal payment.
+        </span>
+        </td>
+        </tr>
+
         <tr valign="top">
         <th scope="row">Link Expiration</th>
         <td><input type="text" name="music_seller_link_expiration" value="<?php echo get_option('music_seller_link_expiration',$op->link_expiration); ?>" placeholder="1 month" /></td>
