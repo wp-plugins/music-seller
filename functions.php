@@ -22,7 +22,7 @@ if (function_exists('hex2bin') == false) {
 		return $result;
 	}
 }
-define('MUSIC_SELLER_VERSION',hex2bin('46756c6e'));
+define('MUSIC_SELLER_VERSION',hex2bin('46756c6c'));
 
 class MUSIC_SELLERWPOptions {
 
@@ -498,11 +498,8 @@ function music_seller( $atts ){
     border: 1px solid " . get_option('music_seller_border_color_hover','#20559A') . ";
 }
 </style>
-
 <script type=\"text/javascript\">
-//<![CDATA[
 jQuery(document).ready(function(){
-
 	new jPlayerPlaylist({
 		jPlayer: \"#jquery_jplayer_" . $key . "\",
 		cssSelectorAncestor: \"#jp_container_" . $key . "\"
@@ -513,7 +510,6 @@ jQuery(document).ready(function(){
 		supplied: \"mp3\",
 		wmode: \"window\",
 		solution: \"html, flash\",
-
 		smoothPlayBar: true,
 		keyEnabled: true,
 		ready: function () {
@@ -544,13 +540,11 @@ jQuery(document).ready(function(){
 				}
           	}
           });
-
 			//TODO: If $0.00 make text just Buy Now
 		  	theDiv = jQuery('#myCart" . get_the_ID() . "').get()[0];
          	music_seller_update_icons(theDiv);
         },
 	});
-
     // Create a basic cart
     jQuery(\"#myCart" . get_the_ID() . "\").PayPalCart({ business: '" . get_option('music_seller_paypal_account') . "',
             notifyURL: \"" . add_query_arg(array('task' => 'music_seller_ipn', 'postid' => get_the_ID(), 'key' => $key), home_url('/')) . "\",
@@ -561,15 +555,13 @@ jQuery(document).ready(function(){
 			cancelURL: '" . add_query_arg(array('task' => 'cancel', 'key' => $key),get_permalink(get_option('music_seller_cancel_page'))) . "',
             currencysign: '" . $symbol . "',          //set the currency symbol
 			cbt: '" . get_option('music_seller_paypal_return_button_text') . "',          //set the currency symbol
-            minicartid: 'minicart',     //element to show the number of items and net value
-            " . (get_option('music_seller_paypal_sandbox') > 0 ? 'sandbox: true,' : '') . "
+            minicartid: 'minicart', " . (get_option('music_seller_paypal_sandbox') > 0 ? 'sandbox: true,' : '') . "
 			persitdays: -1               //set to -1 for cookie-less cart for single page of products, 
                                         // 0 (default) persits for the session, 
                                         // x (number of days) the basket will persits between visits
     });
 });
-//]]>
-			var MUSIC_SELLER_ADD_ALL_TO_CART = '" . $MUSIC_SELLER_ADD_ALL_TO_CART . "';
+	var MUSIC_SELLER_ADD_ALL_TO_CART = '" . $MUSIC_SELLER_ADD_ALL_TO_CART . "';
     function music_seller_add_all_to_cart(event, obj) {
     			e = event;
     			e.preventDefault();
@@ -753,7 +745,7 @@ function music_seller_download_link($order) {
 
 function music_seller_email_delivery($post_id) {
 	global $music_seller_email_delivery;
-
+	
 	$debug = print_r($music_seller_email_delivery,true);
 	foreach ($music_seller_email_delivery['order'] as $k => $v) {
 		$music_seller_email_delivery['text'] = str_replace('%%' . $k . '%%', $v, $music_seller_email_delivery['text']);
