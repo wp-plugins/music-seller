@@ -2,7 +2,7 @@
 Contributors: motov.net
 Tags:audio, audio player, music, music player, e-commerce, ecommerce, sound, shopping,playlist,html5,mp3,ogg,wav,paypal,player,secure player,sell music,sell,shop,sidebar,social,cart,songs,store,shopping cart,widget
 Requires at least: 3.5.1
-Tested up to: 4.2
+Tested up to: 4.2.1
 Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
